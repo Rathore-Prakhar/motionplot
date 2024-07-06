@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "author": "The Bin - Hack Club",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": -30.2, "left": -156, "attrs": {} },
+    { "type": "wokwi-breadboard-mini", "id": "bb2", "top": -183.8, "left": -741.6, "attrs": {} },
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": 126.25,
+      "left": 123.95,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "wokwi-stepper-motor-0",
+      "top": -53.09,
+      "left": -162.32,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-a4988",
+      "id": "wokwi-a4988-1",
+      "top": 206.6,
+      "left": -81.2,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "wokwi-potentiometer-0",
+      "top": 69.3,
+      "left": 145,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "wokwi-a4988-1:SLEEP", "wokwi-a4988-1:RESET", "green", [ "v19.4", "h-9.2" ] ],
+    [ "wokwi-a4988-1:DIR", "pico:GP2", "violet", [ "v19.4", "h124.8", "v-29" ] ],
+    [ "wokwi-a4988-1:STEP", "pico:GP3", "gray", [ "v29", "h144", "v-38.6" ] ],
+    [ "wokwi-a4988-1:2B", "wokwi-stepper-motor-0:A-", "red", [ "v0" ] ],
+    [ "wokwi-stepper-motor-0:A+", "wokwi-a4988-1:2A", "blue", [ "v0" ] ],
+    [ "wokwi-a4988-1:1A", "wokwi-stepper-motor-0:B+", "green", [ "v0" ] ],
+    [ "wokwi-stepper-motor-0:B-", "wokwi-a4988-1:1B", "black", [ "v0" ] ],
+    [ "wokwi-a4988-1:VDD", "pico:VBUS", "green", [ "v-38.55", "h105.68" ] ],
+    [ "wokwi-a4988-1:GND.2", "pico:GND.8", "black", [ "v-19.35", "h124.88", "v-28.8", "h48" ] ],
+    [ "wokwi-potentiometer-0:GND", "pico:GND.6", "black", [ "v25.4", "h8.4" ] ],
+    [ "wokwi-potentiometer-0:SIG", "pico:GP26", "green", [ "v35", "h-20.8" ] ],
+    [ "wokwi-potentiometer-0:VCC", "pico:3V3", "red", [ "v35", "h-78.8" ] ]
+  ],
+  "dependencies": {}
+}
