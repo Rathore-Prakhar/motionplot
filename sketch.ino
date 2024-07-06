@@ -13,17 +13,17 @@ void setup() {
 void loop() {
   int value = analogRead(POT_PIN);
   Serial.println(value);
-  int delayValue = map(value, 0, 1023, 1, 10);
+  int delayValue = map(value, 0, 1023, 10, 1);
   if (value == 0) {
     Serial.print("Stopped");
   } else {
     digitalWrite(DIR_PIN, HIGH);
     for (int i = 0; i < 200; i++) {
       digitalWrite(STEP_PIN, HIGH);
-      delayMicroseconds(500);
+      delayMicroseconds(500); // PWM
       digitalWrite(STEP_PIN, LOW);
       delay(delayValue);
     }
-  } 
+  }
   delay(10);
 }
